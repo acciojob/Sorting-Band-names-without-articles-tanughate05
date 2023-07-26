@@ -8,18 +8,20 @@ sortedList.forEach(i => {
 	li.appendChild(document.createTextNode(i));
 	ul.appendChild(li);
 })
-const sortTitles(list) {
-	const data = []
+function sortTitles(list) {
+	let data = []
 	
 	let newList = []
 	list.forEach((item, index) => {
-		let temp = item.split(" ").map(i => {
-			if(!(i.toLowerCase() === "the" || i.toLowerCase() === "an || i.toLowerCase() === "a)) {
+		let temp = item.split(" ").filter(i => {
+			if(!(i.toLowerCase() === "the" || i.toLowerCase() === "an" || i.toLowerCase() === "a")) {
+      
 				return i;
 			}
 		})
-		data.push({index: index, compareValue: temp.join(), actual:  item})
+    //console.log(temp.join(""))
+		data.push({index: index, compareValue: temp.join(""), actual:  item})
 	})
-	data.sort((a ,b) => a.compareValue<b.compareValue ? 1 : (a.compareValue>b.compareValue ? -1 : 0))
-	return data.map(item => return item.actual)
+	data.sort((a ,b) => a.compareValue>b.compareValue ? 1 : (a.compareValue<b.compareValue ? -1 : 0))
+	 return data.map(item => item.actual)
 }
