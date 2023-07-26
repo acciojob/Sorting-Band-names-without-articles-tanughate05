@@ -20,6 +20,6 @@ const sortTitles(list) {
 		})
 		data.push({index: index, compareValue: temp.join(), actual:  item})
 	})
-	newList.sort((a ,b) => a.compareValue<b.compareValue ? 1 : (a.compareValue>b.compareValue ? -1 : 0))
-	return newList.map(item => return item.actual)
+	data.sort((a ,b) => a.compareValue<b.compareValue ? 1 : (a.compareValue>b.compareValue ? -1 : 0))
+	return data.map(item => return item.actual)
 }
